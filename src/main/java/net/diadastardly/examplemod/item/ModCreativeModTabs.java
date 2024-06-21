@@ -23,7 +23,7 @@ public class ModCreativeModTabs {
 		.title(Component.translatable("creativetab.tutorial_tab"))
 		.displayItems((pParameters, pOutput) -> {
 			pOutput.accept(ModItems.SAPPHIRE.get());
-			pOutput.accept(ModItems.SAPPHIRES.get());
+			pOutput.accept(ModItems.EXAMPLE_ADV.get());
 			
 			pOutput.accept(Items.DIAMOND);
 			

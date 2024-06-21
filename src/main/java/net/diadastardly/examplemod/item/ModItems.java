@@ -1,6 +1,7 @@
 package net.diadastardly.examplemod.item;
 
 import net.diadastardly.examplemod.ExampleMod;
+import net.diadastardly.examplemod.item.custom.ExampleAdvItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -16,9 +17,9 @@ public class ModItems {
 			() -> new Item(new Item.Properties())
 	);
 	
-	public static final RegistryObject<Item> SAPPHIRES = ITEMS.register(
-			"sapphires", 
-			() -> new Item(new Item.Properties())
+	public static final RegistryObject<Item> EXAMPLE_ADV = ITEMS.register(
+			"example_adv", 
+			() -> new ExampleAdvItem(new Item.Properties().durability(100))
 	);
 	
 	public static void register(IEventBus eventBus) {
