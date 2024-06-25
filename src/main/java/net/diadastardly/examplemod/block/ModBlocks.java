@@ -3,6 +3,8 @@ package net.diadastardly.examplemod.block;
 import java.util.function.Supplier;
 
 import net.diadastardly.examplemod.ExampleMod;
+import net.diadastardly.examplemod.block.custom.AutoMiner;
+import net.diadastardly.examplemod.block.custom.ExampleAdvBlock;
 import net.diadastardly.examplemod.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -28,6 +30,14 @@ public class ModBlocks {
 	
 	public static final RegistryObject<Block> EXAMPLE_CRAFTER_BLOCK = registerBlock("example_crafter", 
 			() -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK))
+	);
+	
+	public static final RegistryObject<Block> EXAMPLE_ADV_BLOCK = registerBlock("example_adv_block", 
+			() -> new ExampleAdvBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK))
+	);
+	
+	public static final RegistryObject<Block> AUTOMINER = registerBlock("autominer", 
+			() -> new AutoMiner(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK))
 	);
 	
 	private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block){

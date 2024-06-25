@@ -1,6 +1,7 @@
 package net.diadastardly.examplemod.item;
 
 import net.diadastardly.examplemod.ExampleMod;
+import net.diadastardly.examplemod.item.custom.ConfigureStick;
 import net.diadastardly.examplemod.item.custom.ExampleAdvItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -20,6 +21,11 @@ public class ModItems {
 	public static final RegistryObject<Item> EXAMPLE_ADV = ITEMS.register(
 			"example_adv", 
 			() -> new ExampleAdvItem(new Item.Properties().durability(100))
+	);
+	
+	public static final RegistryObject<Item> CONFIGURE_STICK = ITEMS.register(
+			"configure_stick", 
+			() -> new ConfigureStick(new Item.Properties().durability(100))
 	);
 	
 	public static void register(IEventBus eventBus) {

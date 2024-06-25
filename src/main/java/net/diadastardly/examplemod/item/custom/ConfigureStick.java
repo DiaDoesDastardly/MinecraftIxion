@@ -1,5 +1,6 @@
 package net.diadastardly.examplemod.item.custom;
 
+import net.diadastardly.examplemod.block.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -12,12 +13,17 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class ExampleAdvItem extends Item{
-	//private int testCount;
-	private BlockPos savedPosition;
-	public ExampleAdvItem(Properties pProperties) {
+public class ConfigureStick extends Item{
+	private int currentMode;
+	private String[] modeNames;
+	public ConfigureStick(Properties pProperties) {
 		super(pProperties);
-		//testCount = 0;
+		currentMode = 0;
+		modeNames = new String[] {
+			"Block identifier",
+			"Adjust Adv Block",
+			"Ore finder"
+		};
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -26,17 +32,34 @@ public class ExampleAdvItem extends Item{
 		if(!pContext.getLevel().isClientSide()) {
 			Player player = pContext.getPlayer();
 			BlockPos positionClicked = pContext.getClickedPos();
+			BlockState state = pContext.getLevel().getBlockState(positionClicked);
 			if(player.isCrouching()) {
-				savedPosition = positionClicked;
-				player.sendSystemMessage(Component.literal(
-					"Teleport point saved: "+
-					positionClicked.getX()+", "+
-					positionClicked.getY()+", "+
-					positionClicked.getZ()
-				));
-			}else if(savedPosition != null){
-				player.teleportTo(savedPosition.getX(), savedPosition.getY()+1, savedPosition.getZ());
+				currentMode++;
+				if(currentMode >= modeNames.length) {
+					currentMode = 0;
+				}
+				player.sendSystemMessage(Component.literal("["+currentMode+"]: "+modeNames[currentMode]));
+			}else {
+				if(currentMode == 0) {
+					//player.sendSystemMessage(Component.literal("Clicking on mode 0"));
+					player.sendSystemMessage(Component.literal(state.getBlock().getName().getString()));
+					if(state.getBlock() == ModBlocks.EXAMPLE_ADV_BLOCK.get()) {
+						player.sendSystemMessage(Component.literal("Compatable Mod Block"));
+					}
+				}
+				if(currentMode == 1) {
+					player.sendSystemMessage(Component.literal("Clicking on mode 1"));
+				}
+				if(currentMode == 2) {
+					for(int i = 0; i <= positionClicked.getY()+64; i++) {
+						state = pContext.getLevel().getBlockState(positionClicked.below(i));
+						if(state.getBlock() == Blocks.IRON_ORE){
+							player.sendSystemMessage(Component.literal("Found Iron"));
+						}
+					}
+				}
 			}
+			
 			/*
 			player.changeDimension(null)
 			if(player.isCrouching()) {

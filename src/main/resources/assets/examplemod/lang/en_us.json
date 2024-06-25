@@ -1,7 +1,10 @@
 {
 	"item.examplemod.sapphire": "Sapphire",
+	"item.examplemod.configure_stick": "Sapphire",
 	"item.examplemod.example_adv": "Example Advanced",
 	"block.examplemod.sapphire_block": "Sapphire Block",
+	"block.examplemod.example_adv_block": "Example Adv Block",
+	"block.examplemod.autominer": "Autominer",
 	"block.examplemod.sapphire_ore": "Sapphire Ore",
 	"block.examplemod.example_crafter": "Example Crafter"
 }

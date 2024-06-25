@@ -23,12 +23,13 @@ public class ModCreativeModTabs {
 		.title(Component.translatable("creativetab.tutorial_tab"))
 		.displayItems((pParameters, pOutput) -> {
 			pOutput.accept(ModItems.SAPPHIRE.get());
+			pOutput.accept(ModItems.CONFIGURE_STICK.get());
 			pOutput.accept(ModItems.EXAMPLE_ADV.get());
 			
-			pOutput.accept(Items.DIAMOND);
-			
+			pOutput.accept(ModBlocks.AUTOMINER.get());
 			pOutput.accept(ModBlocks.SAPPHIRE_BLOCK.get());
 			pOutput.accept(ModBlocks.SAPPHIRE_ORE.get());
+			pOutput.accept(ModBlocks.EXAMPLE_ADV_BLOCK.get());
 		})
 		.build()
 	);
